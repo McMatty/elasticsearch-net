@@ -469,6 +469,11 @@ namespace Elasticsearch.Net.Specification.MachineLearningApi
 	{
 	}
 
+	///<summary>Request options for GetTrainedModelDeploymentStats <para>https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-trained-model-deployment-stats.html</para></summary>
+	public class GetTrainedModelDeploymentStatsRequestParameters : RequestParameters<GetTrainedModelDeploymentStatsRequestParameters>
+	{
+	}
+
 	///<summary>Request options for GetTrainedModels <para>https://www.elastic.co/guide/en/elasticsearch/reference/current/get-trained-models.html</para></summary>
 	public class GetTrainedModelsRequestParameters : RequestParameters<GetTrainedModelsRequestParameters>
 	{
@@ -705,6 +710,12 @@ namespace Elasticsearch.Net.Specification.MachineLearningApi
 	///<summary>Request options for PutTrainedModel <para>https://www.elastic.co/guide/en/elasticsearch/reference/current/put-trained-models.html</para></summary>
 	public class PutTrainedModelRequestParameters : RequestParameters<PutTrainedModelRequestParameters>
 	{
+		///<summary>If set to `true` and a `compressed_definition` is provided, the request defers definition decompression and skips relevant validations.</summary>
+		public bool? DeferDefinitionDecompression
+		{
+			get => Q<bool? >("defer_definition_decompression");
+			set => Q("defer_definition_decompression", value);
+		}
 	}
 
 	///<summary>Request options for PutTrainedModelAlias <para>https://www.elastic.co/guide/en/elasticsearch/reference/current/put-trained-models-aliases.html</para></summary>

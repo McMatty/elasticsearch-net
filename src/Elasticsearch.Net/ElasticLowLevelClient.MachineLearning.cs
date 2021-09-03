@@ -583,6 +583,19 @@ namespace Elasticsearch.Net.Specification.MachineLearningApi
 		[MapsApi("ml.get_records", "job_id, body")]
 		public Task<TResponse> GetAnomalyRecordsAsync<TResponse>(string jobId, PostData body, GetAnomalyRecordsRequestParameters requestParameters = null, CancellationToken ctx = default)
 			where TResponse : class, ITransportResponse, new() => DoRequestAsync<TResponse>(POST, Url($"_ml/anomaly_detectors/{jobId:jobId}/results/records"), ctx, body, RequestParams(requestParameters));
+		///<summary>GET on /_ml/trained_models/{model_id}/deployment/_stats <para>https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-trained-model-deployment-stats.html</para></summary>
+		///<param name = "modelId">The ID of the trained model deployment stats to fetch</param>
+		///<param name = "requestParameters">Request specific configuration such as querystring parameters &amp; request specific connection settings.</param>
+		///<remarks>Note: Experimental within the Elasticsearch server, this functionality is Experimental and may be changed or removed completely in a future release. Elastic will take a best effort approach to fix any issues, but experimental features are not subject to the support SLA of official GA features. This functionality is subject to potential breaking changes within a minor version, meaning that your referencing code may break when this library is upgraded.</remarks>
+		public TResponse GetTrainedModelDeploymentStats<TResponse>(string modelId, GetTrainedModelDeploymentStatsRequestParameters requestParameters = null)
+			where TResponse : class, ITransportResponse, new() => DoRequest<TResponse>(GET, Url($"_ml/trained_models/{modelId:modelId}/deployment/_stats"), null, RequestParams(requestParameters));
+		///<summary>GET on /_ml/trained_models/{model_id}/deployment/_stats <para>https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-trained-model-deployment-stats.html</para></summary>
+		///<param name = "modelId">The ID of the trained model deployment stats to fetch</param>
+		///<param name = "requestParameters">Request specific configuration such as querystring parameters &amp; request specific connection settings.</param>
+		///<remarks>Note: Experimental within the Elasticsearch server, this functionality is Experimental and may be changed or removed completely in a future release. Elastic will take a best effort approach to fix any issues, but experimental features are not subject to the support SLA of official GA features. This functionality is subject to potential breaking changes within a minor version, meaning that your referencing code may break when this library is upgraded.</remarks>
+		[MapsApi("ml.get_trained_model_deployment_stats", "model_id")]
+		public Task<TResponse> GetTrainedModelDeploymentStatsAsync<TResponse>(string modelId, GetTrainedModelDeploymentStatsRequestParameters requestParameters = null, CancellationToken ctx = default)
+			where TResponse : class, ITransportResponse, new() => DoRequestAsync<TResponse>(GET, Url($"_ml/trained_models/{modelId:modelId}/deployment/_stats"), ctx, null, RequestParams(requestParameters));
 		///<summary>GET on /_ml/trained_models/{model_id} <para>https://www.elastic.co/guide/en/elasticsearch/reference/current/get-trained-models.html</para></summary>
 		///<param name = "modelId">The ID of the trained models to fetch</param>
 		///<param name = "requestParameters">Request specific configuration such as querystring parameters &amp; request specific connection settings.</param>
@@ -625,14 +638,14 @@ namespace Elasticsearch.Net.Specification.MachineLearningApi
 			where TResponse : class, ITransportResponse, new() => DoRequestAsync<TResponse>(GET, "_ml/trained_models/_stats", ctx, null, RequestParams(requestParameters));
 		///<summary>POST on /_ml/trained_models/{model_id}/deployment/_infer <para>https://www.elastic.co/guide/en/elasticsearch/reference/master/infer-trained-model-deployment.html</para></summary>
 		///<param name = "modelId">The unique identifier of the trained model.</param>
-		///<param name = "body">The input text to be evaluated.</param>
+		///<param name = "body">The docs to apply inference on</param>
 		///<param name = "requestParameters">Request specific configuration such as querystring parameters &amp; request specific connection settings.</param>
 		///<remarks>Note: Experimental within the Elasticsearch server, this functionality is Experimental and may be changed or removed completely in a future release. Elastic will take a best effort approach to fix any issues, but experimental features are not subject to the support SLA of official GA features. This functionality is subject to potential breaking changes within a minor version, meaning that your referencing code may break when this library is upgraded.</remarks>
 		public TResponse InferTrainedModelDeployment<TResponse>(string modelId, PostData body, InferTrainedModelDeploymentRequestParameters requestParameters = null)
 			where TResponse : class, ITransportResponse, new() => DoRequest<TResponse>(POST, Url($"_ml/trained_models/{modelId:modelId}/deployment/_infer"), body, RequestParams(requestParameters));
 		///<summary>POST on /_ml/trained_models/{model_id}/deployment/_infer <para>https://www.elastic.co/guide/en/elasticsearch/reference/master/infer-trained-model-deployment.html</para></summary>
 		///<param name = "modelId">The unique identifier of the trained model.</param>
-		///<param name = "body">The input text to be evaluated.</param>
+		///<param name = "body">The docs to apply inference on</param>
 		///<param name = "requestParameters">Request specific configuration such as querystring parameters &amp; request specific connection settings.</param>
 		///<remarks>Note: Experimental within the Elasticsearch server, this functionality is Experimental and may be changed or removed completely in a future release. Elastic will take a best effort approach to fix any issues, but experimental features are not subject to the support SLA of official GA features. This functionality is subject to potential breaking changes within a minor version, meaning that your referencing code may break when this library is upgraded.</remarks>
 		[MapsApi("ml.infer_trained_model_deployment", "model_id, body")]
